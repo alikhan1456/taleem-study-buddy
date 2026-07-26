@@ -6,7 +6,7 @@ import { Sparkles, Layers, ListChecks, Loader2 } from "lucide-react";
 import { generateStudySet } from "@/lib/study.functions";
 import { saveStudySet } from "@/lib/study-store";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/app")({
   head: () => ({
     meta: [
       { title: "Taleem — Turn notes into flashcards & quizzes" },
