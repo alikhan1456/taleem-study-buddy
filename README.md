@@ -1,29 +1,84 @@
-# Welcome to your Lovable project
+# 📚 Taleem Study Buddy
 
-This project was built with [Lovable](https://lovable.dev).
+Taleem Study Buddy is an AI-powered study tool designed to help students learn, revise, and memorize their study material more effectively.
 
-## Build with Lovable
+The platform allows students to enter their own notes and transforms them into interactive learning materials, including **25 flashcards** and **30 quiz questions**. This helps students actively recall important information, test their understanding, and strengthen their memory.
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## 🚀 Live Demo
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+[Visit Taleem Study Buddy](https://taleem-study-buddy.lovable.app/)
 
-## Development
+## ✨ Features
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### 📝 Turn Notes into Study Material
+Enter your study notes into Taleem Study Buddy and let the platform transform your content into an interactive revision experience.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+### 🧠 25 Interactive Flashcards
+The application generates **25 flashcards** based on the user's notes, helping students review important concepts and improve active recall.
 
-## Built with
+### ❓ 30 Quiz Questions
+Students can test their knowledge with **30 quiz questions** generated from their notes. This allows them to identify gaps in their understanding and reinforce what they have learned.
 
-- TanStack Start
+### 🎯 Active Recall & Memorization
+By combining flashcards with quiz-based practice, Taleem Study Buddy encourages active recall, one of the most effective techniques for strengthening memory and improving long-term retention.
+
+### 📚 Personalized Learning
+Study materials are generated from the user's own notes, making the learning experience relevant to the specific subject or topic the student is studying.
+
+## 🔄 How It Works
+
+1. **Enter Your Notes**  
+   Add your study notes or learning material to the platform.
+
+2. **Generate Study Materials**  
+   Taleem Study Buddy processes your notes and creates interactive learning content.
+
+3. **Study with 25 Flashcards**  
+   Review key concepts through 25 generated flashcards.
+
+4. **Test Yourself with 30 Quiz Questions**  
+   Answer 30 quiz questions based on your study material.
+
+5. **Improve Your Memory**  
+   Use active recall and repeated practice to better understand and memorize your notes.
+
+## 🎓 Why Taleem Study Buddy?
+
+Many students spend hours reading and rereading their notes without actively testing their knowledge. Taleem Study Buddy aims to make studying more effective by turning passive notes into an interactive learning experience.
+
+Instead of simply reading the same material repeatedly, students can:
+
+- Review important concepts with flashcards
+- Test their understanding with quizzes
+- Identify areas that need more revision
+- Practice active recall
+- Improve long-term memory and retention
+
+## 🛠️ Technologies Used
+
 - TypeScript
 - React
+- Vite
 - Tailwind CSS
+- JavaScript
+- HTML & CSS
+
+## 🌟 Project Goal
+
+The goal of Taleem Study Buddy is to make studying smarter, more interactive, and more effective by helping students transform their existing notes into personalized revision materials.
+
+The project combines modern web technologies with AI-powered learning to create a simple study companion for students.
+
+## 👨‍💻 Developer
+
+**Malak Muhammad Ali**
+
+Taleem Study Buddy was created as a project focused on using technology and AI to improve the way students study and retain information.
+
+## 🔗 Links
+
+- **Live App:** https://taleem-study-buddy.lovable.app/
+
+---
+
+⭐ If you find this project interesting, feel free to explore the repository and try the live application!
