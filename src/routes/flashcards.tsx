@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
-import { dummyFlashcards } from "@/lib/study-data";
+import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
+import { loadStudySet } from "@/lib/study-store";
 
 export const Route = createFileRoute("/flashcards")({
   head: () => ({
@@ -17,7 +17,8 @@ export const Route = createFileRoute("/flashcards")({
 });
 
 function Flashcards() {
-  const cards = dummyFlashcards;
+  const [set] = useState(() => loadStudySet());
+  const cards = set.flashcards;
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const card = cards[i];
@@ -46,13 +47,22 @@ function Flashcards() {
           >
             <ArrowLeft className="h-4 w-4" /> Home
           </Link>
-          <button
-            onClick={reset}
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <RotateCcw className="h-4 w-4" /> Restart
-          </button>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <button
+              onClick={reset}
+              className="inline-flex items-center gap-1 hover:text-foreground"
+            >
+              <RotateCcw className="h-4 w-4" /> Restart
+            </button>
+            <Link to="/quiz" className="inline-flex items-center gap-1 hover:text-foreground">
+              <ListChecks className="h-4 w-4" /> Quiz
+            </Link>
+          </div>
         </div>
+
+        {set.topic && (
+          <p className="mt-4 text-xs uppercase tracking-[0.2em] text-primary">{set.topic}</p>
+        )}
 
         <div className="mt-6">
           <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
