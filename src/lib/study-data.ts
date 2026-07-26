@@ -13,7 +13,7 @@ export const dummyFlashcards: Flashcard[] = [
   { front: "What does DNA stand for?", back: "Deoxyribonucleic acid." },
   { front: "What is the capital of Japan?", back: "Tokyo." },
   { front: "Speed of light?", back: "≈ 299,792 km/s." },
-  { front: "What is O(n log n)?", base: "", back: "Time complexity of efficient comparison sorts like mergesort." } as Flashcard,
+  { front: "What is O(n log n)?", back: "Time complexity of efficient comparison sorts like mergesort." },
   { front: "What is a mole in chemistry?", back: "6.022 × 10²³ particles (Avogadro's number)." },
   { front: "What is the Pythagorean theorem?", back: "a² + b² = c² for right triangles." },
 ];
