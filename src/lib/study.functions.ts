@@ -33,8 +33,8 @@ export const generateStudySet = createServerFn({ method: "POST" })
 
     const prompt = `You are a study assistant. From the notes below, produce:
 - a short "topic" title (max 60 chars)
-- exactly 10 concise flashcards ({ front: question, back: short answer })
-- exactly 5 multiple-choice quiz questions, each with exactly 4 options and an "answer" that is the 0-based index of the correct option.
+- exactly 25 concise flashcards ({ front: question, back: short answer })
+- exactly 30 multiple-choice quiz questions, each with exactly 4 options and an "answer" that is the 0-based index of the correct option.
 
 Focus on the most important facts. Keep language simple and clear.
 
@@ -53,9 +53,9 @@ ${data.notes.slice(0, 8000)}
       // Clamp to expected counts and sanitize
       return {
         topic: output.topic.slice(0, 80),
-        flashcards: output.flashcards.slice(0, 10),
+        flashcards: output.flashcards.slice(0, 25),
         quiz: output.quiz
-          .slice(0, 5)
+          .slice(0, 30)
           .map((q) => ({
             ...q,
             options: q.options.slice(0, 4),
