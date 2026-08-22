@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, X, RotateCcw, Trophy } from "lucide-react";
-import { loadStudySet } from "@/lib/study-store";
+import { loadQuizSet } from "@/lib/study-store";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/quiz")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/quiz")({
 });
 
 function Quiz() {
-  const [set] = useState(() => loadStudySet());
+  const [set] = useState(() => loadQuizSet());
   const qs = set.quiz;
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -90,12 +91,14 @@ function Quiz() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
+        <SiteHeader />
         <div className="flex items-center justify-between">
-          <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="h-4 w-4" /> Home
+          <Link to="/app" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground">
+            <ArrowLeft className="h-4 w-4" /> New notes
           </Link>
           <span className="text-sm text-muted-foreground">Score {score}</span>
         </div>
+
 
         <div className="mt-6">
           <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">

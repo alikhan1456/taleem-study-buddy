@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
-import { loadStudySet } from "@/lib/study-store";
+import { loadFlashcardSet } from "@/lib/study-store";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/flashcards")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/flashcards")({
 });
 
 function Flashcards() {
-  const [set] = useState(() => loadStudySet());
+  const [set] = useState(() => loadFlashcardSet());
   const cards = set.flashcards;
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -40,18 +41,13 @@ function Flashcards() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
-        <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" /> Home
+        <SiteHeader />
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <Link to="/app" className="inline-flex items-center gap-1 hover:text-foreground">
+            <ArrowLeft className="h-4 w-4" /> New notes
           </Link>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <button
-              onClick={reset}
-              className="inline-flex items-center gap-1 hover:text-foreground"
-            >
+          <div className="flex items-center gap-4">
+            <button onClick={reset} className="inline-flex items-center gap-1 hover:text-foreground">
               <RotateCcw className="h-4 w-4" /> Restart
             </button>
             <Link to="/quiz" className="inline-flex items-center gap-1 hover:text-foreground">
@@ -59,6 +55,7 @@ function Flashcards() {
             </Link>
           </div>
         </div>
+
 
         {set.topic && (
           <p className="mt-4 text-xs uppercase tracking-[0.2em] text-primary">{set.topic}</p>
