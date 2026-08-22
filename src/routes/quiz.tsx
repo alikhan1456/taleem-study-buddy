@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, X, RotateCcw, Trophy } from "lucide-react";
-import { loadStudySet } from "@/lib/study-store";
+import { loadQuizSet } from "@/lib/study-store";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/quiz")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/quiz")({
 });
 
 function Quiz() {
-  const [set] = useState(() => loadStudySet());
+  const [set] = useState(() => loadQuizSet());
   const qs = set.quiz;
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);

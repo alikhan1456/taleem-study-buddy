@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
-import { loadStudySet } from "@/lib/study-store";
+import { loadFlashcardSet } from "@/lib/study-store";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export const Route = createFileRoute("/flashcards")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/flashcards")({
 });
 
 function Flashcards() {
-  const [set] = useState(() => loadStudySet());
+  const [set] = useState(() => loadFlashcardSet());
   const cards = set.flashcards;
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
