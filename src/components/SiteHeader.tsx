@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Sparkles, Layers, ListChecks, Home } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function SiteHeader() {
   return (
