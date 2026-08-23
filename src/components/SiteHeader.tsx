@@ -17,6 +17,8 @@ export function SiteHeader() {
         <NavItem to="/flashcards" icon={<Layers className="h-4 w-4" />} label="Flashcards" />
         <NavItem to="/quiz" icon={<ListChecks className="h-4 w-4" />} label="Quiz" />
       </nav>
+
+      <ThemeToggle />
     </header>
   );
 }
