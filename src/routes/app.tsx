@@ -84,7 +84,7 @@ function Generate() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-2xl flex-col px-5 py-8 sm:py-12">
         <SiteHeader />
 

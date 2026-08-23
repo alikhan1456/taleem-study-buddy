@@ -39,7 +39,7 @@ function Flashcards() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
         <SiteHeader />
         <div className="flex items-center justify-between text-sm text-muted-foreground">
@@ -121,7 +121,7 @@ function Flashcards() {
 function Face({ label, text, back }: { label: string; text: string; back?: boolean }) {
   return (
     <div
-      className={`absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-border bg-card p-8 text-center shadow-[var(--shadow-soft)] [backface-visibility:hidden] ${
+      className={`paper-card absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-border bg-card p-8 text-center shadow-[var(--shadow-soft)] [backface-visibility:hidden] ${
         back ? "[transform:rotateY(180deg)]" : ""
       }`}
     >
