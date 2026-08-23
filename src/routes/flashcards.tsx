@@ -121,7 +121,7 @@ function Flashcards() {
 function Face({ label, text, back }: { label: string; text: string; back?: boolean }) {
   return (
     <div
-      className={`absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-border bg-card p-8 text-center shadow-[var(--shadow-soft)] [backface-visibility:hidden] ${
+      className={`paper-card absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-border bg-card p-8 text-center shadow-[var(--shadow-soft)] [backface-visibility:hidden] ${
         back ? "[transform:rotateY(180deg)]" : ""
       }`}
     >
