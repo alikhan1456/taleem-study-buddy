@@ -39,7 +39,7 @@ function Flashcards() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
         <SiteHeader />
         <div className="flex items-center justify-between text-sm text-muted-foreground">

@@ -53,7 +53,7 @@ function Quiz() {
   if (done) {
     const pct = Math.round((score / qs.length) * 100);
     return (
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen text-foreground">
         <div className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center px-5 py-10 text-center">
           <div className="grid h-16 w-16 place-items-center rounded-2xl bg-[image:var(--gradient-primary)] text-primary-foreground">
             <Trophy className="h-7 w-7" />
@@ -89,7 +89,7 @@ function Quiz() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
         <SiteHeader />
         <div className="flex items-center justify-between">
