@@ -7,6 +7,7 @@ import { generateFlashcards, generateQuiz } from "@/lib/study.functions";
 import { saveFlashcardSet, saveQuizSet } from "@/lib/study-store";
 import { extractPdfText } from "@/lib/pdf-text";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import studentImg from "@/assets/student.png";
 
 export const Route = createFileRoute("/app")({
