@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Mail, ArrowRight, ClipboardPaste, FileUp, Layers, ListChecks, Quote } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+
 import studentImg from "@/assets/student.png";
 
 export const Route = createFileRoute("/")({
