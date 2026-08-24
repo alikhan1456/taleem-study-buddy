@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, X, RotateCcw, Trophy } from "lucide-react";
 import { loadQuizSet } from "@/lib/study-store";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/quiz")({
   head: () => ({
@@ -165,6 +166,7 @@ function Quiz() {
         >
           {i + 1 === qs.length ? "See score" : "Next question"}
         </Button>
+      <SiteFooter />
       </div>
     </main>
   );
