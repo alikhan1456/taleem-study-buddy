@@ -117,34 +117,12 @@ function Home() {
           </div>
         </section>
 
-        {/* Founder — bottom */}
-        <section className="mt-14 rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
-            <GraduationCap className="h-4 w-4 text-primary" />
-            Meet the founder
-          </div>
-          <h2 className="mt-3 text-xl font-semibold tracking-tight">Malak Muhammad Ali</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            An aspiring data scientist and A Levels Computer Science student at
-            Beaconhouse. Malak built Taleem to help students turn scattered notes into
-            structured practice — quickly, quietly, and without the overwhelm.
-          </p>
-          <a
-            href="mailto:malikalikhan0305@gmail.com"
-            className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border px-3 py-2 text-xs font-medium text-foreground transition hover:border-primary/60"
-          >
-            <Mail className="h-4 w-4 text-primary" />
-            malikalikhan0305@gmail.com
-          </a>
-        </section>
-
-        <footer className="mt-12 text-center text-xs text-muted-foreground">
-          Built for focus.
-        </footer>
+        <SiteFooter />
       </div>
     </main>
   );
 }
+
 
 function Step({ n, icon, title, text }: { n: number; icon: React.ReactNode; title: string; text: string }) {
   return (
