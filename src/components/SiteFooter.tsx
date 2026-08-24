@@ -1,0 +1,83 @@
+import { Link } from "@tanstack/react-router";
+import { GraduationCap, Linkedin, Mail, Layers, ListChecks, Home, Info, Sparkles } from "lucide-react";
+
+const LINKEDIN = "https://www.linkedin.com/in/malak-muhammad-ali-882650374";
+const EMAIL = "malikalikhan0305@gmail.com";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-16 border-t border-border pt-10">
+      <div className="grid gap-8 sm:grid-cols-[1.4fr_1fr]">
+        <div>
+          <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
+            <GraduationCap className="h-4 w-4 text-primary" />
+            Meet the founder
+          </div>
+          <h2 className="mt-3 text-lg font-semibold tracking-tight">Malak Muhammad Ali</h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted-foreground">
+            An aspiring data scientist and A Levels Computer Science student at Beaconhouse.
+            Malak built Taleem to help students turn scattered notes into structured practice —
+            free, focused and calm.
+          </p>
+
+          <div className="mt-4 flex items-center gap-2">
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Malak Muhammad Ali on LinkedIn"
+              title="LinkedIn"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              aria-label={`Email ${EMAIL}`}
+              title="Email"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="text-xs text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              {EMAIL}
+            </a>
+          </div>
+        </div>
+
+        <nav aria-label="Footer" className="text-sm">
+          <div className="text-xs uppercase tracking-widest text-muted-foreground">Explore</div>
+          <ul className="mt-3 space-y-2">
+            <FooterLink to="/" icon={<Home className="h-3.5 w-3.5" />} label="Home" />
+            <FooterLink to="/app" icon={<Sparkles className="h-3.5 w-3.5" />} label="Generate" />
+            <FooterLink to="/flashcards" icon={<Layers className="h-3.5 w-3.5" />} label="Flashcards" />
+            <FooterLink to="/quiz" icon={<ListChecks className="h-3.5 w-3.5" />} label="Quiz" />
+            <FooterLink to="/about" icon={<Info className="h-3.5 w-3.5" />} label="About Taleem" />
+          </ul>
+        </nav>
+      </div>
+
+      <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row">
+        <span>© {new Date().getFullYear()} Taleem — built for focus.</span>
+        <span>Free study tools for every student.</span>
+      </div>
+    </footer>
+  );
+}
+
+function FooterLink({ to, icon, label }: { to: string; icon: React.ReactNode; label: string }) {
+  return (
+    <li>
+      <Link
+        to={to}
+        className="inline-flex items-center gap-2 text-muted-foreground transition hover:text-foreground"
+      >
+        {icon}
+        {label}
+      </Link>
+    </li>
+  );
+}
