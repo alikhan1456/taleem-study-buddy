@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Layers, ListChecks, Home } from "lucide-react";
+import { Sparkles, Layers, ListChecks, Home, Info } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function SiteHeader() {
@@ -16,6 +16,7 @@ export function SiteHeader() {
         <NavItem to="/" icon={<Home className="h-4 w-4" />} label="Home" />
         <NavItem to="/flashcards" icon={<Layers className="h-4 w-4" />} label="Flashcards" />
         <NavItem to="/quiz" icon={<ListChecks className="h-4 w-4" />} label="Quiz" />
+        <NavItem to="/about" icon={<Info className="h-4 w-4" />} label="About" />
       </nav>
 
       <ThemeToggle />
