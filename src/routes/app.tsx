@@ -204,7 +204,7 @@ function Generate() {
           </div>
         </section>
 
-        <footer className="mt-12 text-center text-xs text-muted-foreground">Built for focus.</footer>
+        <SiteFooter />
       </div>
     </main>
   );
