@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
 import { loadFlashcardSet } from "@/lib/study-store";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/flashcards")({
   head: () => ({
@@ -113,6 +114,7 @@ function Flashcards() {
             Next <ChevronRight className="ml-1 h-4 w-4" />
           </Button>
         </div>
+      <SiteFooter />
       </div>
     </main>
   );

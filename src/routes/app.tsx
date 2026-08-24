@@ -7,6 +7,7 @@ import { generateFlashcards, generateQuiz } from "@/lib/study.functions";
 import { saveFlashcardSet, saveQuizSet } from "@/lib/study-store";
 import { extractPdfText } from "@/lib/pdf-text";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import studentImg from "@/assets/student.png";
 
 export const Route = createFileRoute("/app")({
@@ -204,7 +205,7 @@ function Generate() {
           </div>
         </section>
 
-        <footer className="mt-12 text-center text-xs text-muted-foreground">Built for focus.</footer>
+        <SiteFooter />
       </div>
     </main>
   );
