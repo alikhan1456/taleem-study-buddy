@@ -6,8 +6,8 @@ const EMAIL = "malikalikhan0305@gmail.com";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-16 border-t border-border pt-10">
-      <div className="grid gap-8 sm:grid-cols-[1.4fr_1fr]">
+    <footer className="relative left-1/2 mt-16 w-screen -translate-x-1/2 border-t-2 border-primary/30 bg-footer text-footer-foreground shadow-[0_-14px_40px_-24px_oklch(0_0_0/0.35)]">
+      <div className="mx-auto grid max-w-6xl gap-8 px-5 pb-2 pt-10 sm:grid-cols-[1.4fr_1fr] sm:px-8">
         <div>
           <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
             <GraduationCap className="h-4 w-4 text-primary" />
