@@ -41,7 +41,7 @@ function Flashcards() {
 
   return (
     <main className="min-h-screen text-foreground">
-      <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
+      <div className="mx-auto flex min-h-screen max-w-4xl flex-col px-5 sm:px-8 py-6">
         <SiteHeader />
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <Link to="/app" className="inline-flex items-center gap-1 hover:text-foreground">

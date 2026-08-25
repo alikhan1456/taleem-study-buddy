@@ -41,7 +41,7 @@ function Home() {
 
   return (
     <main className="min-h-screen text-foreground">
-      <div className="mx-auto flex min-h-screen max-w-3xl flex-col px-5 py-8 sm:py-12">
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 sm:px-8 py-8 sm:py-12">
         <SiteHeader />
 
         <section className="grid items-center gap-6 sm:grid-cols-[1.2fr_1fr]">
