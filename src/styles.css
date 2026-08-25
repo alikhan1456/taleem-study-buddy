@@ -51,6 +51,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -95,6 +97,8 @@
     radial-gradient(800px 480px at 95% 8%, oklch(0.9 0.09 62 / 0.4), transparent 62%),
     radial-gradient(700px 520px at 50% 105%, oklch(0.88 0.08 320 / 0.28), transparent 65%);
   --shadow-soft: 0 14px 40px -18px oklch(0.4 0.06 60 / 0.45);
+  --footer: oklch(0.31 0.045 55);
+  --footer-foreground: oklch(0.96 0.02 88);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -144,6 +148,8 @@
     radial-gradient(800px 480px at 95% 8%, oklch(0.6 0.1 62 / 0.24), transparent 62%),
     radial-gradient(700px 520px at 50% 105%, oklch(0.5 0.09 320 / 0.24), transparent 65%);
   --shadow-soft: 0 14px 40px -18px oklch(0 0 0 / 0.7);
+  --footer: oklch(0.145 0.025 264);
+  --footer-foreground: oklch(0.94 0.015 90);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -240,3 +246,27 @@
     oklch(0.85 0.04 240 / 0.08) 28px
   );
 }
+
+/* Intro: breaking the handcuffs of illiteracy */
+@keyframes taleem-rope-snap-left {
+  to { transform: translateX(-46px) rotate(-16deg); opacity: 0; }
+}
+@keyframes taleem-rope-snap-right {
+  to { transform: translateX(46px) rotate(16deg); opacity: 0; }
+}
+@keyframes taleem-hand-free-left {
+  to { transform: translate(-38px, -14px) rotate(-14deg); }
+}
+@keyframes taleem-hand-free-right {
+  to { transform: translate(38px, -14px) rotate(14deg); }
+}
+@keyframes taleem-strain {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-2px); }
+}
+.intro-strain { animation: taleem-strain 1.2s ease-in-out infinite; }
+.intro-break .intro-rope-left { animation: taleem-rope-snap-left 0.7s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.intro-break .intro-rope-right { animation: taleem-rope-snap-right 0.7s cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.intro-break .intro-hand-left { animation: taleem-hand-free-left 0.8s cubic-bezier(0.2,0.9,0.2,1) forwards; }
+.intro-break .intro-hand-right { animation: taleem-hand-free-right 0.8s cubic-bezier(0.2,0.9,0.2,1) forwards; }
+.intro-break .intro-strain { animation: none; }
