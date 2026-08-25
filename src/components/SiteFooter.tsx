@@ -64,6 +64,7 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-footer-foreground/70 sm:flex-row sm:px-8">
         <span>© {new Date().getFullYear()} Taleem — built for focus.</span>
         <span>Free study tools for every student.</span>
+        </div>
       </div>
     </footer>
   );
