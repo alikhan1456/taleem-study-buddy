@@ -60,7 +60,8 @@ export function SiteFooter() {
         </nav>
       </div>
 
-      <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-footer-foreground/15 py-6 text-xs text-footer-foreground/70 sm:flex-row">
+      <div className="mt-10 border-t border-footer-foreground/15">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-6 text-xs text-footer-foreground/70 sm:flex-row sm:px-8">
         <span>© {new Date().getFullYear()} Taleem — built for focus.</span>
         <span>Free study tools for every student.</span>
       </div>
