@@ -10,6 +10,7 @@ import {
   Info,
   Mail,
   Linkedin,
+  GraduationCap,
 } from "lucide-react";
 
 const ITEMS = [
@@ -17,6 +18,7 @@ const ITEMS = [
   { to: "/app", label: "Generate", icon: Sparkles },
   { to: "/flashcards", label: "Flashcards", icon: Layers },
   { to: "/quiz", label: "Quiz", icon: ListChecks },
+  { to: "/courses", label: "Free Courses", icon: GraduationCap },
   { to: "/about", label: "About", icon: Info },
 ];
 
