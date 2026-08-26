@@ -1,7 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ClipboardPaste, FileUp, Layers, ListChecks, Quote } from "lucide-react";
+import {
+  ArrowRight,
+  ClipboardPaste,
+  FileUp,
+  GraduationCap,
+  Layers,
+  ListChecks,
+  Megaphone,
+  Quote,
+} from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -87,6 +96,32 @@ function Home() {
               />
             ))}
           </div>
+        </section>
+
+        {/* Small announcements */}
+        <section className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="flex items-center gap-3 rounded-xl border border-dashed border-primary/40 bg-primary/5 px-4 py-3">
+            <span className="inline-flex items-center gap-1 rounded-md bg-primary/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+              <Megaphone className="h-3 w-3" /> Coming soon
+            </span>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">O &amp; A Levels resources</strong> — notes, past
+              papers and topic drills.
+            </p>
+          </div>
+          <Link
+            to="/courses"
+            className="group flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 transition hover:-translate-y-0.5 hover:border-primary/50"
+          >
+            <span className="inline-flex items-center gap-1 rounded-md bg-accent/40 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-foreground">
+              <GraduationCap className="h-3 w-3" /> New
+            </span>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">9 free CS courses</strong> with certificates —
+              Python to computer vision.
+            </p>
+            <ArrowRight className="ml-auto h-4 w-4 text-primary transition group-hover:translate-x-0.5" />
+          </Link>
         </section>
 
         {/* Tutorial */}
