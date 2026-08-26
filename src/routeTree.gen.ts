@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as FlashcardsRouteImport } from './routes/flashcards'
+import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const QuizRoute = QuizRouteImport.update({
 const FlashcardsRoute = FlashcardsRouteImport.update({
   id: '/flashcards',
   path: '/flashcards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppRoute = AppRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
+  '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
+  '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
+  '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/app' | '/flashcards' | '/quiz'
+  fullPaths: '/' | '/about' | '/app' | '/courses' | '/flashcards' | '/quiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/app' | '/flashcards' | '/quiz'
-  id: '__root__' | '/' | '/about' | '/app' | '/flashcards' | '/quiz'
+  to: '/' | '/about' | '/app' | '/courses' | '/flashcards' | '/quiz'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/app'
+    | '/courses'
+    | '/flashcards'
+    | '/quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AppRoute: typeof AppRoute
+  CoursesRoute: typeof CoursesRoute
   FlashcardsRoute: typeof FlashcardsRoute
   QuizRoute: typeof QuizRoute
 }
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/flashcards'
       fullPath: '/flashcards'
       preLoaderRoute: typeof FlashcardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app': {
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AppRoute: AppRoute,
+  CoursesRoute: CoursesRoute,
   FlashcardsRoute: FlashcardsRoute,
   QuizRoute: QuizRoute,
 }
