@@ -55,6 +55,7 @@ export function SiteFooter() {
             <FooterLink to="/app" icon={<Sparkles className="h-3.5 w-3.5" />} label="Generate" />
             <FooterLink to="/flashcards" icon={<Layers className="h-3.5 w-3.5" />} label="Flashcards" />
             <FooterLink to="/quiz" icon={<ListChecks className="h-3.5 w-3.5" />} label="Quiz" />
+            <FooterLink to="/courses" icon={<GraduationCap className="h-3.5 w-3.5" />} label="Free CS Courses" />
             <FooterLink to="/about" icon={<Info className="h-3.5 w-3.5" />} label="About Taleem" />
           </ul>
         </nav>
