@@ -38,18 +38,33 @@ export const Route = createFileRoute("/courses")({
   component: Courses,
 });
 
+type Category = "python" | "ml" | "other";
+
 type Course = {
   n: number;
   title: string;
   provider: string;
   url: string;
   art: ArtKind;
+  category: Category;
   level: "Beginner" | "Intermediate";
   hours: string;
   cert: boolean;
   tags: string[];
   blurb: string;
 };
+
+const CATEGORIES: {
+  id: Category | "all";
+  label: string;
+  blurb: string;
+  icon: typeof LayoutGrid;
+}[] = [
+  { id: "all", label: "All Courses", blurb: "The full catalogue in one grid.", icon: LayoutGrid },
+  { id: "python", label: "Python & Programming", blurb: "Write your first lines and master the language.", icon: Terminal },
+  { id: "ml", label: "Machine Learning & AI", blurb: "Models, neural nets and intelligent systems.", icon: Cpu },
+  { id: "other", label: "More — Coming Soon", blurb: "New tracks and future courses land here.", icon: MoreHorizontal },
+];
 
 const COURSES: Course[] = [
   {
