@@ -199,6 +199,11 @@ const TYPED = "> taleem --list free-cs-courses";
 
 function Courses() {
   const [typed, setTyped] = useState("");
+  const [active, setActive] = useState<Category | "all">("all");
+
+  const filtered = active === "all" ? COURSES : COURSES.filter((c) => c.category === active);
+  const countFor = (id: Category | "all") =>
+    id === "all" ? COURSES.length : COURSES.filter((c) => c.category === id).length;
 
   useEffect(() => {
     let i = 0;
@@ -241,8 +246,74 @@ function Courses() {
           </div>
         </section>
 
+        <div className="mt-8">
+          <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+            <Layers className="h-3.5 w-3.5 text-primary" />
+            browse-by-category
+          </div>
+          <div className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {CATEGORIES.map((cat, i) => {
+              const Icon = cat.icon;
+              const count = countFor(cat.id);
+              const selected = active === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActive(cat.id)}
+                  aria-pressed={selected}
+                  className={`group animate-fade-up relative overflow-hidden rounded-2xl border p-4 text-left shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1.5 ${
+                    selected
+                      ? "border-primary bg-primary/10"
+                      : "border-border bg-card hover:border-primary/60"
+                  }`}
+                  style={{ animationDelay: `${i * 70}ms` }}
+                >
+                  <div className="absolute inset-x-0 top-0 h-[3px] scale-x-0 bg-[image:var(--gradient-primary)] transition-transform duration-300 group-hover:scale-x-100" />
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border ${
+                        selected
+                          ? "border-primary/50 bg-primary/15 text-primary"
+                          : "border-border bg-muted/50 text-primary"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="rounded-full border border-border bg-muted/50 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      {count} {count === 1 ? "course" : "courses"}
+                    </span>
+                  </div>
+                  <div className="mt-3 text-sm font-semibold tracking-tight">{cat.label}</div>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{cat.blurb}</p>
+                  <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary">
+                    {selected ? "Showing below" : "View courses"}
+                    <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {active !== "all" && (
+          <div className="mt-6 flex items-center justify-between rounded-xl border border-primary/30 bg-primary/10 px-4 py-2.5 text-xs">
+            <span className="font-mono text-primary">
+              filter: {CATEGORIES.find((c) => c.id === active)?.label} — {filtered.length}{" "}
+              {filtered.length === 1 ? "course" : "courses"}
+            </span>
+            <button
+              type="button"
+              onClick={() => setActive("all")}
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              Clear filter
+            </button>
+          </div>
+        )}
+
         <ol className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {COURSES.map((c) => (
+          {filtered.map((c) => (
             <li
               key={c.n}
               className="group animate-fade-up relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1.5 hover:border-primary/60"
