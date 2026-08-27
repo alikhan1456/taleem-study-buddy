@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BadgeCheck, Clock, Cpu, Terminal, Zap } from "lucide-react";
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Clock,
+  Cpu,
+  Layers,
+  LayoutGrid,
+  MoreHorizontal,
+  Terminal,
+  Zap,
+} from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CourseArt, type ArtKind } from "@/components/CourseArt";
