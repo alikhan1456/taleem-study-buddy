@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BadgeCheck, Clock, Cpu, Terminal, Zap } from "lucide-react";
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  Clock,
+  Cpu,
+  Layers,
+  LayoutGrid,
+  MoreHorizontal,
+  Terminal,
+  Zap,
+} from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CourseArt, type ArtKind } from "@/components/CourseArt";
@@ -28,18 +38,33 @@ export const Route = createFileRoute("/courses")({
   component: Courses,
 });
 
+type Category = "python" | "ml" | "other";
+
 type Course = {
   n: number;
   title: string;
   provider: string;
   url: string;
   art: ArtKind;
+  category: Category;
   level: "Beginner" | "Intermediate";
   hours: string;
   cert: boolean;
   tags: string[];
   blurb: string;
 };
+
+const CATEGORIES: {
+  id: Category | "all";
+  label: string;
+  blurb: string;
+  icon: typeof LayoutGrid;
+}[] = [
+  { id: "all", label: "All Courses", blurb: "The full catalogue in one grid.", icon: LayoutGrid },
+  { id: "python", label: "Python & Programming", blurb: "Write your first lines and master the language.", icon: Terminal },
+  { id: "ml", label: "Machine Learning & AI", blurb: "Models, neural nets and intelligent systems.", icon: Cpu },
+  { id: "other", label: "More — Coming Soon", blurb: "New tracks and future courses land here.", icon: MoreHorizontal },
+];
 
 const COURSES: Course[] = [
   {
@@ -48,6 +73,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/intro-to-programming",
     art: "code",
+    category: "python",
     level: "Beginner",
     hours: "~5 hrs",
     cert: true,
@@ -61,6 +87,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/python",
     art: "python",
+    category: "python",
     level: "Beginner",
     hours: "~5 hrs",
     cert: true,
@@ -74,6 +101,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/intro-to-machine-learning",
     art: "ml",
+    category: "ml",
     level: "Beginner",
     hours: "~3 hrs",
     cert: true,
@@ -87,6 +115,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/intro-to-deep-learning",
     art: "deep",
+    category: "ml",
     level: "Intermediate",
     hours: "~4 hrs",
     cert: true,
@@ -100,6 +129,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/intermediate-machine-learning",
     art: "boost",
+    category: "ml",
     level: "Intermediate",
     hours: "~4 hrs",
     cert: true,
@@ -113,6 +143,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/pandas",
     art: "table",
+    category: "ml",
     level: "Beginner",
     hours: "~4 hrs",
     cert: true,
@@ -126,6 +157,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/time-series",
     art: "timeseries",
+    category: "ml",
     level: "Intermediate",
     hours: "~5 hrs",
     cert: true,
@@ -139,6 +171,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/feature-engineering",
     art: "gears",
+    category: "ml",
     level: "Intermediate",
     hours: "~5 hrs",
     cert: true,
@@ -152,6 +185,7 @@ const COURSES: Course[] = [
     provider: "Kaggle",
     url: "https://www.kaggle.com/learn/computer-vision",
     art: "vision",
+    category: "ml",
     level: "Intermediate",
     hours: "~4 hrs",
     cert: true,
@@ -165,6 +199,11 @@ const TYPED = "> taleem --list free-cs-courses";
 
 function Courses() {
   const [typed, setTyped] = useState("");
+  const [active, setActive] = useState<Category | "all">("all");
+
+  const filtered = active === "all" ? COURSES : COURSES.filter((c) => c.category === active);
+  const countFor = (id: Category | "all") =>
+    id === "all" ? COURSES.length : COURSES.filter((c) => c.category === id).length;
 
   useEffect(() => {
     let i = 0;
@@ -207,8 +246,74 @@ function Courses() {
           </div>
         </section>
 
+        <div className="mt-8">
+          <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+            <Layers className="h-3.5 w-3.5 text-primary" />
+            browse-by-category
+          </div>
+          <div className="mt-3 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {CATEGORIES.map((cat, i) => {
+              const Icon = cat.icon;
+              const count = countFor(cat.id);
+              const selected = active === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActive(cat.id)}
+                  aria-pressed={selected}
+                  className={`group animate-fade-up relative overflow-hidden rounded-2xl border p-4 text-left shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1.5 ${
+                    selected
+                      ? "border-primary bg-primary/10"
+                      : "border-border bg-card hover:border-primary/60"
+                  }`}
+                  style={{ animationDelay: `${i * 70}ms` }}
+                >
+                  <div className="absolute inset-x-0 top-0 h-[3px] scale-x-0 bg-[image:var(--gradient-primary)] transition-transform duration-300 group-hover:scale-x-100" />
+                  <div className="flex items-center justify-between">
+                    <span
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border ${
+                        selected
+                          ? "border-primary/50 bg-primary/15 text-primary"
+                          : "border-border bg-muted/50 text-primary"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="rounded-full border border-border bg-muted/50 px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                      {count} {count === 1 ? "course" : "courses"}
+                    </span>
+                  </div>
+                  <div className="mt-3 text-sm font-semibold tracking-tight">{cat.label}</div>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{cat.blurb}</p>
+                  <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary">
+                    {selected ? "Showing below" : "View courses"}
+                    <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {active !== "all" && (
+          <div className="mt-6 flex items-center justify-between rounded-xl border border-primary/30 bg-primary/10 px-4 py-2.5 text-xs">
+            <span className="font-mono text-primary">
+              filter: {CATEGORIES.find((c) => c.id === active)?.label} — {filtered.length}{" "}
+              {filtered.length === 1 ? "course" : "courses"}
+            </span>
+            <button
+              type="button"
+              onClick={() => setActive("all")}
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              Clear filter
+            </button>
+          </div>
+        )}
+
         <ol className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {COURSES.map((c) => (
+          {filtered.map((c) => (
             <li
               key={c.n}
               className="group animate-fade-up relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1.5 hover:border-primary/60"
@@ -270,6 +375,16 @@ function Courses() {
             </li>
           ))}
         </ol>
+
+        {filtered.length === 0 && (
+          <div className="mt-8 rounded-2xl border border-dashed border-primary/40 bg-card p-10 text-center">
+            <MoreHorizontal className="mx-auto h-8 w-8 text-primary" />
+            <p className="mt-3 font-mono text-sm text-primary">// nothing here yet</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              New courses added in the future will appear in this category. Check back soon.
+            </p>
+          </div>
+        )}
 
         <p className="mt-8 text-center text-xs text-muted-foreground">
           Courses are hosted by Kaggle. Taleem simply curates the order to follow — pair each one
