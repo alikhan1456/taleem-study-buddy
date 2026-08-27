@@ -376,6 +376,16 @@ function Courses() {
           ))}
         </ol>
 
+        {filtered.length === 0 && (
+          <div className="mt-8 rounded-2xl border border-dashed border-primary/40 bg-card p-10 text-center">
+            <MoreHorizontal className="mx-auto h-8 w-8 text-primary" />
+            <p className="mt-3 font-mono text-sm text-primary">// nothing here yet</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              New courses added in the future will appear in this category. Check back soon.
+            </p>
+          </div>
+        )}
+
         <p className="mt-8 text-center text-xs text-muted-foreground">
           Courses are hosted by Kaggle. Taleem simply curates the order to follow — pair each one
           with flashcards and quizzes from your own notes.
