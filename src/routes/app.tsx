@@ -22,7 +22,7 @@ export const Route = createFileRoute("/app")({
   component: Generate,
 });
 
-const MAX_WORDS = 5000;
+const MAX_WORDS = 10000;
 
 function Generate() {
   const [notes, setNotes] = useState("");
