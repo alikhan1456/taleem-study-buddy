@@ -27,8 +27,8 @@ export type FlashcardSet = { topic: string; flashcards: Flashcard[] };
 export type QuizSet = { topic: string; quiz: QuizQuestion[] };
 export type StudySet = FlashcardSet & QuizSet;
 
-// ~5000 words of notes
-const MAX_CHARS = 32000;
+// ~10000 words of notes
+const MAX_CHARS = 64000;
 
 export const generateFlashcards = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => InputSchema.parse(input))
