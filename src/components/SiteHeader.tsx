@@ -32,7 +32,7 @@ function NavItem({ to, icon, label }: { to: string; icon: React.ReactNode; label
     <Link
       to={to}
       activeProps={{ className: "bg-primary/15 text-foreground" }}
-      className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-muted-foreground transition hover:text-foreground"
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-1.5 text-muted-foreground transition hover:text-foreground"
     >
       {icon}
       {label}
