@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 
-import handsBound from "../assets/hands-bound.jpg";
-import handsFree from "../assets/hands-free.jpg";
-
 const KEY = "taleem:intro-seen";
 
 /**
- * Cinematic intro: photoreal bound hands on a dark stage.
+ * Cinematic intro: two hands bound by a rope of illiteracy on a dark stage.
  * A click, tap, scroll or key press snaps the rope and reveals the site.
  */
 export function IntroGate() {
@@ -58,29 +55,61 @@ export function IntroGate() {
       onClick={release}
       className={`fixed inset-0 z-[100] cursor-pointer overflow-hidden bg-[oklch(0.13_0.01_60)] transition-opacity duration-700 ${
         breaking ? "pointer-events-none opacity-0 delay-700" : "opacity-100"
-      }`}
+      } ${breaking ? "intro-break" : ""}`}
     >
-      {/* bound hands — dark stage */}
-      <img
-        src={handsBound}
-        alt="Two hands bound together with rope"
-        width={1280}
-        height={1280}
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-[900ms] ease-out ${
-          breaking ? "scale-105 opacity-0" : "intro-strain scale-100 opacity-100"
-        }`}
-      />
-      {/* hands breaking free */}
-      <img
-        src={handsFree}
-        alt="Hands breaking free from a snapped rope"
-        width={1280}
-        height={1280}
-        loading="lazy"
-        className={`absolute inset-0 h-full w-full object-cover transition-all duration-[900ms] ease-out ${
-          breaking ? "scale-100 opacity-100" : "scale-110 opacity-0"
-        }`}
-      />
+      {/* stage glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_42%,oklch(0.32_0.06_55/0.55),transparent_75%)]" />
+
+      {/* bound hands illustration */}
+      <div className="absolute inset-0 grid place-items-center">
+        <svg
+          viewBox="0 0 320 220"
+          className="intro-strain w-72 max-w-[80vw] sm:w-96"
+          aria-hidden="true"
+        >
+          {/* left hand */}
+          <g className="intro-hand-left">
+            <rect x="52" y="86" width="86" height="48" rx="24" fill="oklch(0.78 0.07 75)" />
+            <rect x="52" y="86" width="86" height="48" rx="24" fill="oklch(0.4 0.05 60 / 0.25)" />
+            {[0, 1, 2, 3].map((i) => (
+              <rect
+                key={i}
+                x={60 + i * 19}
+                y="66"
+                width="13"
+                height="30"
+                rx="6.5"
+                fill="oklch(0.8 0.07 75)"
+              />
+            ))}
+          </g>
+          {/* right hand */}
+          <g className="intro-hand-right">
+            <rect x="182" y="86" width="86" height="48" rx="24" fill="oklch(0.78 0.07 75)" />
+            <rect x="182" y="86" width="86" height="48" rx="24" fill="oklch(0.4 0.05 60 / 0.25)" />
+            {[0, 1, 2, 3].map((i) => (
+              <rect
+                key={i}
+                x={190 + i * 19}
+                y="66"
+                width="13"
+                height="30"
+                rx="6.5"
+                fill="oklch(0.8 0.07 75)"
+              />
+            ))}
+          </g>
+          {/* rope */}
+          <g stroke="oklch(0.55 0.09 55)" strokeWidth="9" strokeLinecap="round" fill="none">
+            <path className="intro-rope-left" d="M160 108 C 132 96, 108 96, 84 112" />
+            <path className="intro-rope-right" d="M160 108 C 188 96, 212 96, 236 112" />
+            <path className="intro-rope-left" d="M160 120 C 130 132, 104 130, 80 118" opacity="0.8" />
+            <path className="intro-rope-right" d="M160 120 C 190 132, 216 130, 240 118" opacity="0.8" />
+          </g>
+          {/* knot */}
+          <circle cx="160" cy="112" r="12" fill="oklch(0.5 0.09 55)" />
+        </svg>
+      </div>
 
       {/* cinematic vignette + text scrim */}
       <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_45%,transparent_25%,oklch(0.08_0.01_60/0.75)_100%)]" />
