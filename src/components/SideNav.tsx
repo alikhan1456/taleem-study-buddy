@@ -12,6 +12,7 @@ import {
   Linkedin,
   GraduationCap,
 } from "lucide-react";
+import logoImg from "@/assets/taleem-logo.png";
 
 const ITEMS = [
   { to: "/", label: "Home", icon: Home },
@@ -53,8 +54,14 @@ export function SideNav() {
         aria-hidden={!open}
       >
         <div className="mb-6 flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground">
-            <Sparkles className="h-4 w-4" />
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-card border border-border">
+            <img
+              src={logoImg}
+              alt=""
+              className="h-7 w-7 object-contain"
+              width={36}
+              height={36}
+            />
           </div>
           <span className="text-lg font-semibold tracking-tight">Taleem</span>
         </div>
