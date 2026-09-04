@@ -1,13 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Layers, ListChecks, Home, Info, GraduationCap } from "lucide-react";
+import { Layers, ListChecks, Home, Info, GraduationCap } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logoImg from "@/assets/taleem-logo.png";
 
 export function SiteHeader() {
   return (
     <header className="mb-10 flex flex-wrap items-center justify-between gap-3">
       <Link to="/" className="group flex items-center gap-2" aria-label="Taleem home">
-        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground transition group-hover:scale-105">
-          <Sparkles className="h-4 w-4" />
+        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-card border border-border transition group-hover:scale-105">
+          <img
+            src={logoImg}
+            alt=""
+            className="h-7 w-7 object-contain"
+            width={36}
+            height={36}
+          />
         </div>
         <span className="text-lg font-semibold tracking-tight">Taleem</span>
       </Link>
