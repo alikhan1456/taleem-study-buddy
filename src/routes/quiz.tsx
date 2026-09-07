@@ -20,7 +20,25 @@ export const Route = createFileRoute("/quiz")({
 });
 
 function Quiz() {
-  const [set] = useState(() => loadQuizSet());
+  const navigate = useNavigate();
+  const [set, setSet] = useState<QuizSet | null>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const stored = loadQuizSet();
+    if (!stored) {
+      navigate({ to: "/app", replace: true });
+      return;
+    }
+    setSet(stored);
+    setReady(true);
+  }, [navigate]);
+
+  if (!ready || !set) return null;
+  return <QuizView set={set} />;
+}
+
+function QuizView({ set }: { set: QuizSet }) {
   const qs = set.quiz;
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
