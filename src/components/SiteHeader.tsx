@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Layers, ListChecks, Home, Info, GraduationCap } from "lucide-react";
+import { Layers, ListChecks, Home, Info, GraduationCap, School } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import logoImg from "@/assets/taleem-logo.png";
 
@@ -28,6 +28,7 @@ export function SiteHeader() {
         <NavItem to="/flashcards" icon={<Layers className="h-4 w-4" />} label="Flashcards" />
         <NavItem to="/quiz" icon={<ListChecks className="h-4 w-4" />} label="Quiz" />
         <NavItem to="/courses" icon={<GraduationCap className="h-4 w-4" />} label="Courses" />
+        <NavItem to="/a-levels" icon={<School className="h-4 w-4" />} label="A-Levels" />
         <NavItem to="/about" icon={<Info className="h-4 w-4" />} label="About" />
       </nav>
     </header>

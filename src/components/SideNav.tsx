@@ -11,6 +11,7 @@ import {
   Mail,
   Linkedin,
   GraduationCap,
+  School,
 } from "lucide-react";
 import logoImg from "@/assets/taleem-logo.png";
 
@@ -20,6 +21,7 @@ const ITEMS = [
   { to: "/flashcards", label: "Flashcards", icon: Layers },
   { to: "/quiz", label: "Quiz", icon: ListChecks },
   { to: "/courses", label: "Free Courses", icon: GraduationCap },
+  { to: "/a-levels", label: "A-Levels", icon: School },
   { to: "/about", label: "About", icon: Info },
 ];
 
