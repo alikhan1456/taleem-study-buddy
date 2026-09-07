@@ -1,5 +1,5 @@
 import type { FlashcardSet, QuizSet } from "./study.functions";
-import { dummyFlashcards, dummyQuiz } from "./study-data";
+
 
 const FLASH_KEY = "taleem:flashcards";
 const QUIZ_KEY = "taleem:quiz";
