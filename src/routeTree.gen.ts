@@ -14,7 +14,13 @@ import { Route as FlashcardsRouteImport } from './routes/flashcards'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ALevelsRouteImport } from './routes/a-levels'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ALevelsIndexRouteImport } from './routes/a-levels.index'
+import { Route as ALevelsPastPapersRouteImport } from './routes/a-levels.past-papers'
+import { Route as ALevelsOtherResourcesRouteImport } from './routes/a-levels.other-resources'
+import { Route as ALevelsNotesRouteImport } from './routes/a-levels.notes'
+import { Route as ALevelsBooksRouteImport } from './routes/a-levels.books'
 
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
@@ -41,19 +47,55 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ALevelsRoute = ALevelsRouteImport.update({
+  id: '/a-levels',
+  path: '/a-levels',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ALevelsIndexRoute = ALevelsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ALevelsRoute,
+} as any)
+const ALevelsPastPapersRoute = ALevelsPastPapersRouteImport.update({
+  id: '/past-papers',
+  path: '/past-papers',
+  getParentRoute: () => ALevelsRoute,
+} as any)
+const ALevelsOtherResourcesRoute = ALevelsOtherResourcesRouteImport.update({
+  id: '/other-resources',
+  path: '/other-resources',
+  getParentRoute: () => ALevelsRoute,
+} as any)
+const ALevelsNotesRoute = ALevelsNotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => ALevelsRoute,
+} as any)
+const ALevelsBooksRoute = ALevelsBooksRouteImport.update({
+  id: '/books',
+  path: '/books',
+  getParentRoute: () => ALevelsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-levels': typeof ALevelsRouteWithChildren
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
   '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
+  '/a-levels/books': typeof ALevelsBooksRoute
+  '/a-levels/notes': typeof ALevelsNotesRoute
+  '/a-levels/other-resources': typeof ALevelsOtherResourcesRoute
+  '/a-levels/past-papers': typeof ALevelsPastPapersRoute
+  '/a-levels/': typeof ALevelsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,33 +104,74 @@ export interface FileRoutesByTo {
   '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
+  '/a-levels/books': typeof ALevelsBooksRoute
+  '/a-levels/notes': typeof ALevelsNotesRoute
+  '/a-levels/other-resources': typeof ALevelsOtherResourcesRoute
+  '/a-levels/past-papers': typeof ALevelsPastPapersRoute
+  '/a-levels': typeof ALevelsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-levels': typeof ALevelsRouteWithChildren
   '/about': typeof AboutRoute
   '/app': typeof AppRoute
   '/courses': typeof CoursesRoute
   '/flashcards': typeof FlashcardsRoute
   '/quiz': typeof QuizRoute
+  '/a-levels/books': typeof ALevelsBooksRoute
+  '/a-levels/notes': typeof ALevelsNotesRoute
+  '/a-levels/other-resources': typeof ALevelsOtherResourcesRoute
+  '/a-levels/past-papers': typeof ALevelsPastPapersRoute
+  '/a-levels/': typeof ALevelsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/app' | '/courses' | '/flashcards' | '/quiz'
+  fullPaths:
+    | '/'
+    | '/a-levels'
+    | '/about'
+    | '/app'
+    | '/courses'
+    | '/flashcards'
+    | '/quiz'
+    | '/a-levels/books'
+    | '/a-levels/notes'
+    | '/a-levels/other-resources'
+    | '/a-levels/past-papers'
+    | '/a-levels/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/app' | '/courses' | '/flashcards' | '/quiz'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/about'
     | '/app'
     | '/courses'
     | '/flashcards'
     | '/quiz'
+    | '/a-levels/books'
+    | '/a-levels/notes'
+    | '/a-levels/other-resources'
+    | '/a-levels/past-papers'
+    | '/a-levels'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-levels'
+    | '/about'
+    | '/app'
+    | '/courses'
+    | '/flashcards'
+    | '/quiz'
+    | '/a-levels/books'
+    | '/a-levels/notes'
+    | '/a-levels/other-resources'
+    | '/a-levels/past-papers'
+    | '/a-levels/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ALevelsRoute: typeof ALevelsRouteWithChildren
   AboutRoute: typeof AboutRoute
   AppRoute: typeof AppRoute
   CoursesRoute: typeof CoursesRoute
@@ -133,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-levels': {
+      id: '/a-levels'
+      path: '/a-levels'
+      fullPath: '/a-levels'
+      preLoaderRoute: typeof ALevelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -140,11 +230,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-levels/': {
+      id: '/a-levels/'
+      path: '/'
+      fullPath: '/a-levels/'
+      preLoaderRoute: typeof ALevelsIndexRouteImport
+      parentRoute: typeof ALevelsRoute
+    }
+    '/a-levels/past-papers': {
+      id: '/a-levels/past-papers'
+      path: '/past-papers'
+      fullPath: '/a-levels/past-papers'
+      preLoaderRoute: typeof ALevelsPastPapersRouteImport
+      parentRoute: typeof ALevelsRoute
+    }
+    '/a-levels/other-resources': {
+      id: '/a-levels/other-resources'
+      path: '/other-resources'
+      fullPath: '/a-levels/other-resources'
+      preLoaderRoute: typeof ALevelsOtherResourcesRouteImport
+      parentRoute: typeof ALevelsRoute
+    }
+    '/a-levels/notes': {
+      id: '/a-levels/notes'
+      path: '/notes'
+      fullPath: '/a-levels/notes'
+      preLoaderRoute: typeof ALevelsNotesRouteImport
+      parentRoute: typeof ALevelsRoute
+    }
+    '/a-levels/books': {
+      id: '/a-levels/books'
+      path: '/books'
+      fullPath: '/a-levels/books'
+      preLoaderRoute: typeof ALevelsBooksRouteImport
+      parentRoute: typeof ALevelsRoute
+    }
   }
 }
 
+interface ALevelsRouteChildren {
+  ALevelsBooksRoute: typeof ALevelsBooksRoute
+  ALevelsNotesRoute: typeof ALevelsNotesRoute
+  ALevelsOtherResourcesRoute: typeof ALevelsOtherResourcesRoute
+  ALevelsPastPapersRoute: typeof ALevelsPastPapersRoute
+  ALevelsIndexRoute: typeof ALevelsIndexRoute
+}
+
+const ALevelsRouteChildren: ALevelsRouteChildren = {
+  ALevelsBooksRoute: ALevelsBooksRoute,
+  ALevelsNotesRoute: ALevelsNotesRoute,
+  ALevelsOtherResourcesRoute: ALevelsOtherResourcesRoute,
+  ALevelsPastPapersRoute: ALevelsPastPapersRoute,
+  ALevelsIndexRoute: ALevelsIndexRoute,
+}
+
+const ALevelsRouteWithChildren =
+  ALevelsRoute._addFileChildren(ALevelsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ALevelsRoute: ALevelsRouteWithChildren,
   AboutRoute: AboutRoute,
   AppRoute: AppRoute,
   CoursesRoute: CoursesRoute,
