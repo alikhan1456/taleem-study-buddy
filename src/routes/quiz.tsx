@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import type { QuizSet } from "@/lib/study.functions";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, X, RotateCcw, Trophy } from "lucide-react";
 import { loadQuizSet } from "@/lib/study-store";
