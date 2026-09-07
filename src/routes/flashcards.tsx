@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import type { FlashcardSet } from "@/lib/study.functions";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
 import { loadFlashcardSet } from "@/lib/study-store";
