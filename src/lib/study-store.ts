@@ -1,5 +1,5 @@
 import type { FlashcardSet, QuizSet } from "./study.functions";
-import { dummyFlashcards, dummyQuiz } from "./study-data";
+
 
 const FLASH_KEY = "taleem:flashcards";
 const QUIZ_KEY = "taleem:quiz";
@@ -31,13 +31,12 @@ export function saveQuizSet(set: QuizSet) {
   save(QUIZ_KEY, set);
 }
 
-export function loadFlashcardSet(): FlashcardSet {
-  return load<FlashcardSet>(FLASH_KEY, {
-    topic: "Sample flashcards",
-    flashcards: dummyFlashcards,
-  });
+export function loadFlashcardSet(): FlashcardSet | null {
+  const set = load<FlashcardSet | null>(FLASH_KEY, null);
+  return set && set.flashcards?.length ? set : null;
 }
 
-export function loadQuizSet(): QuizSet {
-  return load<QuizSet>(QUIZ_KEY, { topic: "Sample quiz", quiz: dummyQuiz });
+export function loadQuizSet(): QuizSet | null {
+  const set = load<QuizSet | null>(QUIZ_KEY, null);
+  return set && set.quiz?.length ? set : null;
 }

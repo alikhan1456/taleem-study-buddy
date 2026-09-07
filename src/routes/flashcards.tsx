@@ -1,5 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import type { FlashcardSet } from "@/lib/study.functions";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight, RotateCcw, ListChecks } from "lucide-react";
 import { loadFlashcardSet } from "@/lib/study-store";
@@ -19,7 +20,25 @@ export const Route = createFileRoute("/flashcards")({
 });
 
 function Flashcards() {
-  const [set] = useState(() => loadFlashcardSet());
+  const navigate = useNavigate();
+  const [set, setSet] = useState<FlashcardSet | null>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const stored = loadFlashcardSet();
+    if (!stored) {
+      navigate({ to: "/app", replace: true });
+      return;
+    }
+    setSet(stored);
+    setReady(true);
+  }, [navigate]);
+
+  if (!ready || !set) return null;
+  return <FlashcardsView set={set} />;
+}
+
+function FlashcardsView({ set }: { set: FlashcardSet }) {
   const cards = set.flashcards;
   const [i, setI] = useState(0);
   const [flipped, setFlipped] = useState(false);
