@@ -3,7 +3,10 @@ import { generateText, Output, NoObjectGeneratedError } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "./ai-gateway.server";
 
-const InputSchema = z.object({ notes: z.string().min(10) });
+const InputSchema = z.object({
+  notes: z.string().min(10),
+  count: z.number().int().min(10).max(100).optional(),
+});
 
 const FlashcardsSchema = z.object({
   topic: z.string(),
@@ -38,13 +41,16 @@ export const generateFlashcards = createServerFn({ method: "POST" })
 
     const gateway = createLovableAiGatewayProvider(key, { structuredOutputs: true });
 
+    const count = data.count ?? 50;
+
     const prompt = `You are an expert study assistant. Study the notes below in depth and cover ALL key points, definitions, dates, formulas, processes and examples.
 
 Produce:
 - a short "topic" title (max 60 chars)
-- exactly 50 flashcards ({ front: a clear question or prompt, back: a short precise answer })
+- exactly ${count} flashcards ({ front: a clear question or prompt, back: a short precise answer })
 
-Spread the flashcards evenly across the whole material — do not over-focus on the beginning. No duplicates.
+Coverage rule (critical): first outline every distinct concept in the notes from the very beginning to the very end, then distribute the ${count} flashcards evenly across that whole outline. Even with a small number of cards, no section may be skipped — merge related details into one card instead of dropping a section. Prioritise the most examinable and load-bearing facts, keep every answer accurate and grounded strictly in the notes, and never duplicate.
+
 
 NOTES:
 """
@@ -59,7 +65,7 @@ ${data.notes.slice(0, MAX_CHARS)}
       });
       return {
         topic: output.topic.slice(0, 80),
-        flashcards: output.flashcards.slice(0, 50),
+        flashcards: output.flashcards.slice(0, count),
       };
     } catch (error) {
       if (NoObjectGeneratedError.isInstance(error)) {

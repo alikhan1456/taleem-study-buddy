@@ -26,6 +26,7 @@ const MAX_WORDS = 10000;
 
 function Generate() {
   const [notes, setNotes] = useState("");
+  const [cardCount, setCardCount] = useState(50);
   const [busy, setBusy] = useState<null | "flashcards" | "quiz" | "pdf">(null);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
@@ -68,10 +69,11 @@ function Generate() {
     }
     setError(null);
     setBusy(mode);
-    const payload = { data: { notes: notes.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ") } };
+    const cleaned = notes.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ");
+    const payload = { data: { notes: cleaned } };
     try {
       if (mode === "flashcards") {
-        saveFlashcardSet(await makeFlashcards(payload));
+        saveFlashcardSet(await makeFlashcards({ data: { notes: cleaned, count: cardCount } }));
         navigate({ to: "/flashcards" });
       } else {
         saveQuizSet(await makeQuiz(payload));
@@ -176,19 +178,40 @@ function Generate() {
 
           <h2 className="mt-8 text-sm font-medium text-muted-foreground">Choose what to generate</h2>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <button
-              onClick={() => run("flashcards")}
-              disabled={busy !== null}
-              className="rounded-2xl border border-border bg-card p-5 text-left transition hover:-translate-y-1 hover:border-primary/50 disabled:opacity-60"
-            >
+            <div className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-primary/50">
               {busy === "flashcards" ? (
                 <Loader2 className="h-5 w-5 animate-spin text-primary" />
               ) : (
                 <Layers className="h-5 w-5 text-primary" />
               )}
-              <div className="mt-3 text-sm font-medium">50 Flashcards</div>
+              <div className="mt-3 text-sm font-medium">Flashcards</div>
               <div className="text-xs text-muted-foreground">In-depth, covers every key point</div>
-            </button>
+
+              <label htmlFor="card-count" className="mt-4 block text-xs text-muted-foreground">
+                How many flashcards?
+              </label>
+              <select
+                id="card-count"
+                value={cardCount}
+                onChange={(e) => setCardCount(Number(e.target.value))}
+                disabled={busy !== null}
+                className="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
+              >
+                {[10, 30, 50, 70, 100].map((n) => (
+                  <option key={n} value={n}>
+                    {n} flashcards
+                  </option>
+                ))}
+              </select>
+
+              <Button
+                onClick={() => run("flashcards")}
+                disabled={busy !== null}
+                className="mt-3 w-full rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground hover:opacity-90"
+              >
+                {busy === "flashcards" ? "Generating…" : `Generate ${cardCount} flashcards`}
+              </Button>
+            </div>
             <button
               onClick={() => run("quiz")}
               disabled={busy !== null}
