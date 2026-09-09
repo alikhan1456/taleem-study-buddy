@@ -34,6 +34,11 @@ const QUOTES = [
   { text: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
   { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
   { text: "Seek knowledge from the cradle to the grave.", author: "Arabic proverb" },
+  { text: "Success is the sum of small efforts repeated day in and day out.", author: "Robert Collier" },
+  { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+  { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+  { text: "The expert in anything was once a beginner.", author: "Helen Hayes" },
+  { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
 ];
 
 function Home() {
