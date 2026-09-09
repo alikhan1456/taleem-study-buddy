@@ -69,10 +69,11 @@ function Generate() {
     }
     setError(null);
     setBusy(mode);
-    const payload = { data: { notes: notes.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ") } };
+    const cleaned = notes.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ");
+    const payload = { data: { notes: cleaned } };
     try {
       if (mode === "flashcards") {
-        saveFlashcardSet(await makeFlashcards(payload));
+        saveFlashcardSet(await makeFlashcards({ data: { notes: cleaned, count: cardCount } }));
         navigate({ to: "/flashcards" });
       } else {
         saveQuizSet(await makeQuiz(payload));
