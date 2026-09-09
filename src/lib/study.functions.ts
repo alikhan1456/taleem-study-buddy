@@ -3,7 +3,10 @@ import { generateText, Output, NoObjectGeneratedError } from "ai";
 import { z } from "zod";
 import { createLovableAiGatewayProvider } from "./ai-gateway.server";
 
-const InputSchema = z.object({ notes: z.string().min(10) });
+const InputSchema = z.object({
+  notes: z.string().min(10),
+  count: z.number().int().min(10).max(100).optional(),
+});
 
 const FlashcardsSchema = z.object({
   topic: z.string(),
