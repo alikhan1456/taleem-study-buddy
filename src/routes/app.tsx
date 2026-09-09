@@ -26,6 +26,7 @@ const MAX_WORDS = 10000;
 
 function Generate() {
   const [notes, setNotes] = useState("");
+  const [cardCount, setCardCount] = useState(50);
   const [busy, setBusy] = useState<null | "flashcards" | "quiz" | "pdf">(null);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
