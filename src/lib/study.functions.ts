@@ -65,7 +65,7 @@ ${data.notes.slice(0, MAX_CHARS)}
       });
       return {
         topic: output.topic.slice(0, 80),
-        flashcards: output.flashcards.slice(0, 50),
+        flashcards: output.flashcards.slice(0, count),
       };
     } catch (error) {
       if (NoObjectGeneratedError.isInstance(error)) {
