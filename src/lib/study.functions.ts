@@ -83,11 +83,13 @@ export const generateQuiz = createServerFn({ method: "POST" })
 
     const gateway = createLovableAiGatewayProvider(key, { structuredOutputs: true });
 
+    const count = data.count ?? 30;
+
     const prompt = `You are an expert study assistant. Study the notes below in depth and cover all key points.
 
 Produce:
 - a short "topic" title (max 60 chars)
-- exactly 30 multiple-choice questions, each with exactly 4 plausible options and "answer" as the 0-based index of the correct option.
+- exactly ${count} multiple-choice questions, each with exactly 4 plausible options and "answer" as the 0-based index of the correct option.
 
 Spread questions across the whole material. No duplicates.
 
@@ -104,7 +106,7 @@ ${data.notes.slice(0, MAX_CHARS)}
       });
       return {
         topic: output.topic.slice(0, 80),
-        quiz: output.quiz.slice(0, 30).map((q) => ({
+        quiz: output.quiz.slice(0, count).map((q) => ({
           ...q,
           options: q.options.slice(0, 4),
           answer: Math.max(0, Math.min(3, q.answer)),

@@ -27,6 +27,7 @@ const MAX_WORDS = 10000;
 function Generate() {
   const [notes, setNotes] = useState("");
   const [cardCount, setCardCount] = useState(50);
+  const [quizCount, setQuizCount] = useState(30);
   const [busy, setBusy] = useState<null | "flashcards" | "quiz" | "pdf">(null);
   const [error, setError] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
@@ -70,13 +71,12 @@ function Generate() {
     setError(null);
     setBusy(mode);
     const cleaned = notes.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ");
-    const payload = { data: { notes: cleaned } };
     try {
       if (mode === "flashcards") {
         saveFlashcardSet(await makeFlashcards({ data: { notes: cleaned, count: cardCount } }));
         navigate({ to: "/flashcards" });
       } else {
-        saveQuizSet(await makeQuiz(payload));
+        saveQuizSet(await makeQuiz({ data: { notes: cleaned, count: quizCount } }));
         navigate({ to: "/quiz" });
       }
     } catch (e) {
@@ -212,19 +212,40 @@ function Generate() {
                 {busy === "flashcards" ? "Generating…" : `Generate ${cardCount} flashcards`}
               </Button>
             </div>
-            <button
-              onClick={() => run("quiz")}
-              disabled={busy !== null}
-              className="rounded-2xl border border-border bg-card p-5 text-left transition hover:-translate-y-1 hover:border-primary/50 disabled:opacity-60"
-            >
+            <div className="rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:border-primary/50">
               {busy === "quiz" ? (
                 <Loader2 className="h-5 w-5 animate-spin text-primary" />
               ) : (
                 <ListChecks className="h-5 w-5 text-primary" />
               )}
-              <div className="mt-3 text-sm font-medium">30 Quiz questions</div>
+              <div className="mt-3 text-sm font-medium">Quiz questions</div>
               <div className="text-xs text-muted-foreground">MCQs with instant feedback</div>
-            </button>
+
+              <label htmlFor="quiz-count" className="mt-4 block text-xs text-muted-foreground">
+                How many quiz questions?
+              </label>
+              <select
+                id="quiz-count"
+                value={quizCount}
+                onChange={(e) => setQuizCount(Number(e.target.value))}
+                disabled={busy !== null}
+                className="mt-1.5 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
+              >
+                {[10, 30, 50, 70, 100].map((n) => (
+                  <option key={n} value={n}>
+                    {n} questions
+                  </option>
+                ))}
+              </select>
+
+              <Button
+                onClick={() => run("quiz")}
+                disabled={busy !== null}
+                className="mt-3 w-full rounded-xl bg-[image:var(--gradient-primary)] text-primary-foreground hover:opacity-90"
+              >
+                {busy === "quiz" ? "Generating…" : `Generate ${quizCount} questions`}
+              </Button>
+            </div>
           </div>
         </section>
 
