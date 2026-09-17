@@ -5,6 +5,7 @@ import {
   BadgeCheck,
   Clock,
   Cpu,
+  GraduationCap,
   Layers,
   LayoutGrid,
   MoreHorizontal,
@@ -27,7 +28,7 @@ export const Route = createFileRoute("/courses")({
       { property: "og:title", content: "Free Computer Science Courses — Taleem" },
       {
         property: "og:description",
-        content: "Nine free, certificate-backed CS courses to level up your programming and data skills.",
+        content: "Free CS courses from Kaggle and Harvard to level up your programming and data skills.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://taleem-study-buddy.lovable.app/courses" },
@@ -38,7 +39,7 @@ export const Route = createFileRoute("/courses")({
   component: Courses,
 });
 
-type Category = "python" | "ml" | "other";
+type Category = "python" | "ml" | "harvard" | "other";
 
 type Course = {
   n: number;
@@ -54,6 +55,8 @@ type Course = {
   blurb: string;
 };
 
+const HARVARD_CATALOG = "https://pll.harvard.edu/catalog";
+
 const CATEGORIES: {
   id: Category | "all";
   label: string;
@@ -63,8 +66,10 @@ const CATEGORIES: {
   { id: "all", label: "All Courses", blurb: "The full catalogue in one grid.", icon: LayoutGrid },
   { id: "python", label: "Python & Programming", blurb: "Write your first lines and master the language.", icon: Terminal },
   { id: "ml", label: "Machine Learning & AI", blurb: "Models, neural nets and intelligent systems.", icon: Cpu },
+  { id: "harvard", label: "Harvard — All Courses", blurb: "Free online courses straight from Harvard University.", icon: GraduationCap },
   { id: "other", label: "More — Coming Soon", blurb: "New tracks and future courses land here.", icon: MoreHorizontal },
 ];
+
 
 const COURSES: Course[] = [
   {
@@ -193,7 +198,78 @@ const COURSES: Course[] = [
     blurb:
       "Teach a machine to see — convolutional networks, feature extraction and data augmentation.",
   },
+  {
+    n: 10,
+    title: "CS50: Introduction to Computer Science",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50-introduction-computer-science",
+    art: "code",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~12 weeks",
+    cert: false,
+    tags: ["C", "Algorithms", "Memory"],
+    blurb:
+      "Harvard's legendary intro to computer science — problem solving, algorithms and how software really works.",
+  },
+  {
+    n: 11,
+    title: "CS50's Introduction to Programming with Python",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-introduction-programming-python",
+    art: "python",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~10 weeks",
+    cert: false,
+    tags: ["Python", "Functions", "Testing"],
+    blurb:
+      "Learn Python properly — functions, exceptions, file handling, regular expressions and unit testing.",
+  },
+  {
+    n: 12,
+    title: "CS50's Introduction to Artificial Intelligence with Python",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python",
+    art: "ml",
+    category: "harvard",
+    level: "Intermediate",
+    hours: "~7 weeks",
+    cert: false,
+    tags: ["Search", "Neural nets", "Python"],
+    blurb:
+      "The ideas behind modern AI — search, knowledge, optimisation, machine learning and neural networks.",
+  },
+  {
+    n: 13,
+    title: "CS50's Web Programming with Python and JavaScript",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-web-programming-python-and-javascript",
+    art: "table",
+    category: "harvard",
+    level: "Intermediate",
+    hours: "~12 weeks",
+    cert: false,
+    tags: ["Django", "SQL", "JavaScript"],
+    blurb:
+      "Design and deploy real web apps with Django, SQL, JavaScript and modern front-end tooling.",
+  },
+  {
+    n: 14,
+    title: "Data Science: R Basics",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/data-science-r-basics",
+    art: "timeseries",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~8 weeks",
+    cert: false,
+    tags: ["R", "Data wrangling", "Stats"],
+    blurb:
+      "The first step of Harvard's data science path — R fundamentals for analysing real datasets.",
+  },
 ];
+
 
 const TYPED = "> taleem --list free-cs-courses";
 
@@ -225,7 +301,7 @@ function Courses() {
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
               <Zap className="h-3.5 w-3.5" />
-              9 free courses · certificates included
+              14 free courses · Kaggle & Harvard
             </div>
             <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
               Level up your
@@ -311,6 +387,32 @@ function Courses() {
             </button>
           </div>
         )}
+
+        {active === "harvard" && (
+          <a
+            href={HARVARD_CATALOG}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3.5 shadow-[var(--shadow-soft)] transition hover:border-primary/60"
+          >
+            <span className="flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-muted/50 text-primary">
+                <GraduationCap className="h-4.5 w-4.5" />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold tracking-tight">
+                  Browse every Harvard online course
+                </span>
+                <span className="block text-xs text-muted-foreground">
+                  Harvard's full catalogue — hundreds of free and paid courses across every subject.
+                </span>
+              </span>
+            </span>
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        )}
+
+
 
         <ol className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filtered.map((c) => (
