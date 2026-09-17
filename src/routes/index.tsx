@@ -59,8 +59,6 @@ function Home() {
   return (
     <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 sm:px-8 py-8 sm:py-12">
-        <SiteHeader />
-
         {/* Dark hero banner */}
         <section className="relative -mx-5 mb-8 overflow-hidden rounded-none border-y border-border sm:mx-0 sm:rounded-3xl sm:border">
           <img
@@ -83,6 +81,8 @@ function Home() {
             </p>
           </div>
         </section>
+
+        <SiteHeader />
 
         <section className="grid items-center gap-6 sm:grid-cols-[1.2fr_1fr]">
           <div>
