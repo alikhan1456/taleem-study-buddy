@@ -388,6 +388,32 @@ function Courses() {
           </div>
         )}
 
+        {active === "harvard" && (
+          <a
+            href={HARVARD_CATALOG}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3.5 shadow-[var(--shadow-soft)] transition hover:border-primary/60"
+          >
+            <span className="flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-muted/50 text-primary">
+                <GraduationCap className="h-4.5 w-4.5" />
+              </span>
+              <span>
+                <span className="block text-sm font-semibold tracking-tight">
+                  Browse every Harvard online course
+                </span>
+                <span className="block text-xs text-muted-foreground">
+                  Harvard's full catalogue — hundreds of free and paid courses across every subject.
+                </span>
+              </span>
+            </span>
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        )}
+
+
+
         <ol className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filtered.map((c) => (
             <li
