@@ -24,6 +24,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Taleem turns your notes or PDFs into 50 flashcards and a 30-question quiz. Founded by Malak Muhammad Ali." },
       { property: "og:title", content: "Taleem — Study smarter" },
       { property: "og:description", content: "Turn any notes or PDF into flashcards and quizzes in seconds." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
@@ -68,15 +70,15 @@ function Home() {
             height={1024}
             className="h-[240px] w-full object-cover object-right sm:h-[340px] lg:h-[400px]"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.02_264/0.92)] via-[oklch(0.15_0.02_264/0.72)] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-hero-ink/90 via-hero-ink/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-center gap-3 px-6 sm:px-10 lg:px-14">
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[oklch(0.96_0.02_88)] backdrop-blur-sm">
+            <span className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-hero-foreground">
               <GraduationCap className="h-3 w-3" /> Taleem
             </span>
-            <h2 className="max-w-lg text-2xl font-semibold leading-tight tracking-tight text-[oklch(0.97_0.015_88)] sm:text-4xl">
+            <h2 className="max-w-lg text-2xl font-semibold leading-tight text-hero-foreground sm:text-4xl">
               Your notes, turned into a study session.
             </h2>
-            <p className="max-w-md text-xs leading-relaxed text-[oklch(0.88_0.015_88)] sm:text-sm">
+            <p className="max-w-md text-xs leading-relaxed text-hero-muted sm:text-sm">
               Free flashcards, quizzes and A-Level resources — built for students.
             </p>
           </div>
