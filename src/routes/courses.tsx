@@ -28,7 +28,7 @@ export const Route = createFileRoute("/courses")({
       { property: "og:title", content: "Free Computer Science Courses — Taleem" },
       {
         property: "og:description",
-        content: "Nine free, certificate-backed CS courses to level up your programming and data skills.",
+        content: "Free CS courses from Kaggle and Harvard to level up your programming and data skills.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://taleem-study-buddy.lovable.app/courses" },
