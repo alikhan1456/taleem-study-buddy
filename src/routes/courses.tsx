@@ -38,7 +38,7 @@ export const Route = createFileRoute("/courses")({
   component: Courses,
 });
 
-type Category = "python" | "ml" | "other";
+type Category = "python" | "ml" | "harvard" | "other";
 
 type Course = {
   n: number;
@@ -54,6 +54,8 @@ type Course = {
   blurb: string;
 };
 
+const HARVARD_CATALOG = "https://pll.harvard.edu/catalog";
+
 const CATEGORIES: {
   id: Category | "all";
   label: string;
@@ -63,8 +65,10 @@ const CATEGORIES: {
   { id: "all", label: "All Courses", blurb: "The full catalogue in one grid.", icon: LayoutGrid },
   { id: "python", label: "Python & Programming", blurb: "Write your first lines and master the language.", icon: Terminal },
   { id: "ml", label: "Machine Learning & AI", blurb: "Models, neural nets and intelligent systems.", icon: Cpu },
+  { id: "harvard", label: "Harvard — All Courses", blurb: "Free online courses straight from Harvard University.", icon: GraduationCap },
   { id: "other", label: "More — Coming Soon", blurb: "New tracks and future courses land here.", icon: MoreHorizontal },
 ];
+
 
 const COURSES: Course[] = [
   {
