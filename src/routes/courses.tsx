@@ -301,7 +301,7 @@ function Courses() {
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
               <Zap className="h-3.5 w-3.5" />
-              9 free courses · certificates included
+              14 free courses · Kaggle & Harvard
             </div>
             <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
               Level up your
