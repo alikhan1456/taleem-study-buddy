@@ -58,30 +58,30 @@ function Home() {
 
   return (
     <main className="min-h-screen text-foreground">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 sm:px-8 py-8 sm:py-12">
-        {/* Dark hero banner */}
-        <section className="relative -mx-5 mb-8 overflow-hidden rounded-none border-y border-border sm:mx-0 sm:rounded-3xl sm:border">
-          <img
-            src={headerImg}
-            alt="A dark wood study desk with an open book, stacked volumes and a warm brass lamp in a quiet library"
-            width={1920}
-            height={1024}
-            className="h-[240px] w-full object-cover object-right sm:h-[340px] lg:h-[400px]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-hero-ink/90 via-hero-ink/50 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-center gap-3 px-6 sm:px-10 lg:px-14">
-            <span className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-hero-foreground">
-              <GraduationCap className="h-3 w-3" /> Taleem
-            </span>
-            <h2 className="max-w-lg text-2xl font-semibold leading-tight text-hero-foreground sm:text-4xl">
-              Your notes, turned into a study session.
-            </h2>
-            <p className="max-w-md text-xs leading-relaxed text-hero-muted sm:text-sm">
-              Free flashcards, quizzes and A-Level resources — built for students.
-            </p>
-          </div>
-        </section>
+      {/* Dark hero banner — thin strip, full width */}
+      <section className="relative overflow-hidden border-b border-border">
+        <img
+          src={headerImg}
+          alt="A dark wood study desk with an open book, stacked volumes and a warm brass lamp in a quiet library"
+          width={1920}
+          height={1024}
+          className="h-24 w-full object-cover object-right sm:h-32"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-hero-ink/90 via-hero-ink/50 to-transparent" />
+        <div className="absolute inset-0 flex items-center gap-3 px-5 sm:px-8">
+          <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-hero-foreground sm:text-sm">
+            <GraduationCap className="h-3 w-3" /> Taleem
+          </span>
+          <h2 className="truncate text-sm font-semibold leading-tight text-hero-foreground sm:text-lg">
+            Your notes, turned into a study session.
+          </h2>
+          <p className="ml-auto hidden shrink-0 text-xs leading-relaxed text-hero-muted sm:block">
+            Free flashcards, quizzes and A-Level resources — built for students.
+          </p>
+        </div>
+      </section>
 
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 sm:px-8 py-8 sm:py-12">
         <SiteHeader />
 
         <section className="grid items-center gap-6 sm:grid-cols-[1.2fr_1fr]">
