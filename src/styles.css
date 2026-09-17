@@ -27,6 +27,9 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
+  --color-hero-ink: oklch(0.15 0.02 264);
+  --color-hero-foreground: oklch(0.97 0.015 88);
+  --color-hero-muted: oklch(0.88 0.015 88);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
