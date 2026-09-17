@@ -5,6 +5,7 @@ import {
   BadgeCheck,
   Clock,
   Cpu,
+  GraduationCap,
   Layers,
   LayoutGrid,
   MoreHorizontal,
