@@ -198,7 +198,78 @@ const COURSES: Course[] = [
     blurb:
       "Teach a machine to see — convolutional networks, feature extraction and data augmentation.",
   },
+  {
+    n: 10,
+    title: "CS50: Introduction to Computer Science",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50-introduction-computer-science",
+    art: "code",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~12 weeks",
+    cert: false,
+    tags: ["C", "Algorithms", "Memory"],
+    blurb:
+      "Harvard's legendary intro to computer science — problem solving, algorithms and how software really works.",
+  },
+  {
+    n: 11,
+    title: "CS50's Introduction to Programming with Python",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-introduction-programming-python",
+    art: "python",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~10 weeks",
+    cert: false,
+    tags: ["Python", "Functions", "Testing"],
+    blurb:
+      "Learn Python properly — functions, exceptions, file handling, regular expressions and unit testing.",
+  },
+  {
+    n: 12,
+    title: "CS50's Introduction to Artificial Intelligence with Python",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python",
+    art: "ml",
+    category: "harvard",
+    level: "Intermediate",
+    hours: "~7 weeks",
+    cert: false,
+    tags: ["Search", "Neural nets", "Python"],
+    blurb:
+      "The ideas behind modern AI — search, knowledge, optimisation, machine learning and neural networks.",
+  },
+  {
+    n: 13,
+    title: "CS50's Web Programming with Python and JavaScript",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/cs50s-web-programming-python-and-javascript",
+    art: "table",
+    category: "harvard",
+    level: "Intermediate",
+    hours: "~12 weeks",
+    cert: false,
+    tags: ["Django", "SQL", "JavaScript"],
+    blurb:
+      "Design and deploy real web apps with Django, SQL, JavaScript and modern front-end tooling.",
+  },
+  {
+    n: 14,
+    title: "Data Science: R Basics",
+    provider: "Harvard",
+    url: "https://pll.harvard.edu/course/data-science-r-basics",
+    art: "timeseries",
+    category: "harvard",
+    level: "Beginner",
+    hours: "~8 weeks",
+    cert: false,
+    tags: ["R", "Data wrangling", "Stats"],
+    blurb:
+      "The first step of Harvard's data science path — R fundamentals for analysing real datasets.",
+  },
 ];
+
 
 const TYPED = "> taleem --list free-cs-courses";
 
