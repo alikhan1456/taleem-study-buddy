@@ -15,6 +15,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
 import studentImg from "@/assets/student.png";
+import headerImg from "@/assets/taleem-study-header.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,6 +58,29 @@ function Home() {
     <main className="min-h-screen text-foreground">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 sm:px-8 py-8 sm:py-12">
         <SiteHeader />
+
+        {/* Dark hero banner */}
+        <section className="relative -mx-5 mb-8 overflow-hidden rounded-none border-y border-border sm:mx-0 sm:rounded-3xl sm:border">
+          <img
+            src={headerImg}
+            alt="A dark wood study desk with an open book, stacked volumes and a warm brass lamp in a quiet library"
+            width={1920}
+            height={1024}
+            className="h-[240px] w-full object-cover object-right sm:h-[340px] lg:h-[400px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.02_264/0.92)] via-[oklch(0.15_0.02_264/0.72)] to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center gap-3 px-6 sm:px-10 lg:px-14">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[oklch(0.96_0.02_88)] backdrop-blur-sm">
+              <GraduationCap className="h-3 w-3" /> Taleem
+            </span>
+            <h2 className="max-w-lg text-2xl font-semibold leading-tight tracking-tight text-[oklch(0.97_0.015_88)] sm:text-4xl">
+              Your notes, turned into a study session.
+            </h2>
+            <p className="max-w-md text-xs leading-relaxed text-[oklch(0.88_0.015_88)] sm:text-sm">
+              Free flashcards, quizzes and A-Level resources — built for students.
+            </p>
+          </div>
+        </section>
 
         <section className="grid items-center gap-6 sm:grid-cols-[1.2fr_1fr]">
           <div>
