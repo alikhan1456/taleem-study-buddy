@@ -13,6 +13,16 @@ import w22 from "@/assets/papers/9618_w22_qp_22.pdf.asset.json";
 import w23 from "@/assets/papers/9618_w23_qp_22.pdf.asset.json";
 import w24 from "@/assets/papers/9618_w24_qp_22.pdf.asset.json";
 import w25 from "@/assets/papers/9618_w25_qp_22.pdf.asset.json";
+import s21MarkScheme from "@/assets/papers/9618_s21_ms_22.pdf.asset.json";
+import s22MarkScheme from "@/assets/papers/9618_s22_ms_22.pdf.asset.json";
+import s23MarkScheme from "@/assets/papers/9618_s23_ms_22.pdf.asset.json";
+import s24MarkScheme from "@/assets/papers/9618_s24_ms_22.pdf.asset.json";
+import s25MarkScheme from "@/assets/papers/9618_s25_ms_22.pdf.asset.json";
+import w21MarkScheme from "@/assets/papers/9618_w21_ms_22.pdf.asset.json";
+import w22MarkScheme from "@/assets/papers/9618_w22_ms_22.pdf.asset.json";
+import w23MarkScheme from "@/assets/papers/9618_w23_ms_22.pdf.asset.json";
+import w24MarkScheme from "@/assets/papers/9618_w24_ms_22.pdf.asset.json";
+import w25MarkScheme from "@/assets/papers/9618_w25_ms_22.pdf.asset.json";
 
 export const Route = createFileRoute("/a-levels/past-papers")({
   head: () => ({
@@ -35,22 +45,22 @@ export const Route = createFileRoute("/a-levels/past-papers")({
 });
 
 const PAPER_2 = [
-  { label: "May/June 2021", url: s21.url },
-  { label: "October/November 2021", url: w21.url },
-  { label: "May/June 2022", url: s22.url },
-  { label: "October/November 2022", url: w22.url },
-  { label: "May/June 2023", url: s23.url },
-  { label: "October/November 2023", url: w23.url },
-  { label: "May/June 2024", url: s24.url },
-  { label: "October/November 2024", url: w24.url },
-  { label: "May/June 2025", url: s25.url },
-  { label: "October/November 2025", url: w25.url },
+  { label: "May/June 2021", url: s21.url, markSchemeUrl: s21MarkScheme.url },
+  { label: "October/November 2021", url: w21.url, markSchemeUrl: w21MarkScheme.url },
+  { label: "May/June 2022", url: s22.url, markSchemeUrl: s22MarkScheme.url },
+  { label: "October/November 2022", url: w22.url, markSchemeUrl: w22MarkScheme.url },
+  { label: "May/June 2023", url: s23.url, markSchemeUrl: s23MarkScheme.url },
+  { label: "October/November 2023", url: w23.url, markSchemeUrl: w23MarkScheme.url },
+  { label: "May/June 2024", url: s24.url, markSchemeUrl: s24MarkScheme.url },
+  { label: "October/November 2024", url: w24.url, markSchemeUrl: w24MarkScheme.url },
+  { label: "May/June 2025", url: s25.url, markSchemeUrl: s25MarkScheme.url },
+  { label: "October/November 2025", url: w25.url, markSchemeUrl: w25MarkScheme.url },
 ];
 
 function PaperList({
   papers,
 }: {
-  papers: { label: string; url: string }[];
+  papers: { label: string; url: string; markSchemeUrl?: string }[];
 }) {
   if (papers.length === 0) {
     return (
@@ -62,19 +72,36 @@ function PaperList({
   return (
     <ul className="mt-3 grid gap-2 sm:grid-cols-2">
       {papers.map((paper) => (
-        <li key={paper.label}>
-          <a
-            href={paper.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm font-medium transition hover:border-primary/60 hover:bg-muted/70"
-          >
-            <span className="inline-flex items-center gap-2.5">
-              <FileText className="h-4 w-4 text-primary" />
-              {paper.label}
-            </span>
-            <Download className="h-4 w-4 text-muted-foreground transition group-hover:text-primary" />
-          </a>
+        <li key={paper.label} className="rounded-xl border border-border bg-muted/40 p-3">
+          <p className="mb-2 text-sm font-semibold">{paper.label}</p>
+          <div className="grid grid-cols-2 gap-2">
+            <a
+              href={paper.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex min-w-0 items-center justify-between gap-2 rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium transition hover:border-primary/60 hover:bg-muted/70"
+            >
+              <span className="inline-flex min-w-0 items-center gap-2">
+                <FileText className="h-4 w-4 shrink-0 text-primary" />
+                <span className="truncate">Question paper</span>
+              </span>
+              <Download className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+            </a>
+            {paper.markSchemeUrl && (
+              <a
+                href={paper.markSchemeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex min-w-0 items-center justify-between gap-2 rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium transition hover:border-primary/60 hover:bg-muted/70"
+              >
+                <span className="inline-flex min-w-0 items-center gap-2">
+                  <ScrollText className="h-4 w-4 shrink-0 text-primary" />
+                  <span className="truncate">Mark scheme</span>
+                </span>
+                <Download className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+              </a>
+            )}
+          </div>
         </li>
       ))}
     </ul>
