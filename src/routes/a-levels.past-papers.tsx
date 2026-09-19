@@ -157,6 +157,21 @@ function PastPapersPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                   Paper 2 — Fundamental Problem-solving & Programming
                 </h3>
+                <a
+                  href={insertS26.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group mt-3 flex items-center justify-between gap-3 rounded-xl border border-primary/40 bg-primary/10 px-4 py-3 text-sm font-medium transition hover:border-primary/70 hover:bg-primary/15"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <FileText className="h-4 w-4 shrink-0 text-primary" />
+                    <span>
+                      Pre-release Insert (9618/22){" "}
+                      <span className="text-muted-foreground">— relevant for all Paper 2 exams</span>
+                    </span>
+                  </span>
+                  <Download className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+                </a>
                 <PaperList papers={PAPER_2} />
               </section>
             </div>
