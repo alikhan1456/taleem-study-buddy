@@ -23,6 +23,7 @@ import w22MarkScheme from "@/assets/papers/9618_w22_ms_22.pdf.asset.json";
 import w23MarkScheme from "@/assets/papers/9618_w23_ms_22.pdf.asset.json";
 import w24MarkScheme from "@/assets/papers/9618_w24_ms_22.pdf.asset.json";
 import w25MarkScheme from "@/assets/papers/9618_w25_ms_22.pdf.asset.json";
+import insertS26 from "@/assets/papers/9618_s26_in_22.pdf.asset.json";
 
 export const Route = createFileRoute("/a-levels/past-papers")({
   head: () => ({
