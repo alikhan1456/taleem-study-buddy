@@ -25,6 +25,15 @@ import w24MarkScheme from "@/assets/papers/9618_w24_ms_22.pdf.asset.json";
 import w25MarkScheme from "@/assets/papers/9618_w25_ms_22.pdf.asset.json";
 import insertS26 from "@/assets/papers/9618_s26_in_22.pdf.asset.json";
 
+import s21P1 from "@/assets/papers/9618_s21_qp_12.pdf.asset.json";
+import s23P1 from "@/assets/papers/9618_s23_qp_12.pdf.asset.json";
+import s24P1 from "@/assets/papers/9618_s24_qp_12.pdf.asset.json";
+import s25P1 from "@/assets/papers/9618_s25_qp_12.pdf.asset.json";
+import w22P1 from "@/assets/papers/9618_w22_qp_12.pdf.asset.json";
+import w23P1 from "@/assets/papers/9618_w23_qp_12.pdf.asset.json";
+import w24P1 from "@/assets/papers/9618_w24_qp_12.pdf.asset.json";
+import w25P1 from "@/assets/papers/9618_w25_qp_12.pdf.asset.json";
+
 export const Route = createFileRoute("/a-levels/past-papers")({
   head: () => ({
     meta: [
@@ -44,6 +53,17 @@ export const Route = createFileRoute("/a-levels/past-papers")({
   }),
   component: PastPapersPage,
 });
+
+const PAPER_1 = [
+  { label: "May/June 2021", url: s21P1.url },
+  { label: "May/June 2023", url: s23P1.url },
+  { label: "May/June 2024", url: s24P1.url },
+  { label: "May/June 2025", url: s25P1.url },
+  { label: "October/November 2022", url: w22P1.url },
+  { label: "October/November 2023", url: w23P1.url },
+  { label: "October/November 2024", url: w24P1.url },
+  { label: "October/November 2025", url: w25P1.url },
+];
 
 const PAPER_2 = [
   { label: "May/June 2021", url: s21.url, markSchemeUrl: s21MarkScheme.url },
@@ -150,7 +170,7 @@ function PastPapersPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
                   Paper 1 — Theory Fundamentals
                 </h3>
-                <PaperList papers={[]} />
+                <PaperList papers={PAPER_1} />
               </section>
 
               <section>
